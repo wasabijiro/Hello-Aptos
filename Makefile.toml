@@ -1,0 +1,34 @@
+[env]
+HELLO_APTOS = "0x99f1d9e7b1cf0be04b344a780a99f99f17fe676e2cd9ccdc52fc87924f575101"
+
+[tasks."compile:move"]
+script = '''
+aptos move compile --named-addresses hello_aptos=default
+'''
+
+[tasks."publish:move"]
+script = '''
+aptos move publish --named-addresses hello_aptos=default
+'''
+
+[tasks."create_wasabi"]
+script = '''
+aptos move run \
+    --url https://testnet.aptoslabs.com \
+    --function-id ${HELLO_APTOS}::wasabi::create_wasabi \
+'''
+
+[tasks."push_wasabi"]
+script = '''
+aptos move run \
+    --url https://testnet.aptoslabs.com \
+    --function-id ${HELLO_APTOS}::wasabi::push_wasabi \
+    --args u64:114514
+'''
+
+[tasks."admin:renew:testnet"]
+script = '''
+rm -rf .aptos/
+aptos init
+aptos account fund-with-faucet --account default
+'''

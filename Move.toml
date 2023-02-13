@@ -1,0 +1,17 @@
+[package]
+name = "hello-aptos"
+version = "0.0.0"
+
+# [dependencies.MoveStdlib]
+# git = 'https://github.com/aptos-labs/aptos-core.git'
+# rev = 'testnet'
+# subdir = 'aptos-move/framework/move-stdlib'
+
+[dependencies.AptosFramework]
+git = 'https://github.com/aptos-labs/aptos-core.git'
+rev = 'testnet'
+subdir = 'aptos-move/framework/aptos-framework'
+
+[addresses]
+hello_aptos = "0x99f1d9e7b1cf0be04b344a780a99f99f17fe676e2cd9ccdc52fc87924f575101"
+AptosFramework = "0x1"
